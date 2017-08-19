@@ -20,7 +20,7 @@ alert tcp any any -> any 80 (msg:" tcp linoit"; content:"GET /users/men1212/canv
 #alert tcp any any -> any 80 (msg:" tcp linoit"; content:"GET ; content:"Host: linoit.com"; sid:10007; rev:1;)
 
 # 7 -  http://naevr.com/
-# redirection integer range ? 302 status code....;;;;
+# redirection rule not set
 alert tcp any any -> any 80 (msg:" tcp naevr.com"; content:"GET /"; content:"Host: naevr.com"; sid:10008; rev:1;)
 alert tcp any any -> any any (msg:" tcp naevr.com_302"; content:"302"; http_stat_code; content:"Location: http://*.naevr.com"; sid:10009; rev:1;)
 alert tcp any any -> any 80 (msg:" tcp ww#.naevr.com"; content:"GET /"; content:"Host: *.naevr.com"; content:"Host: ww7.naevr.com"; content:"Host: ww12.naevr.com";sid:10011; rev:1;)
@@ -92,8 +92,9 @@ alert tcp any any -> any 80 (msg:"tcp ryomyong"; content:"GET /"; content:"Host:
 alert tcp any any -> any 80 (msg:"tcp sedisk"; content:"GET /"; content:"Host: sedisk.com"; sid:10031; rev:1;)
 
 # 26 - http://www.sk386.com/
-# redirect to mkmk35.com ; <script>top.location.href='http://mkmk35.com'</script> ;
+# redirect to mkmk35.com ; <script>top.location.href='http://mkmk35.com'</script>;
 alert tcp any any -> any 80 (msg:"tcp sk386"; content:"GET /"; content:"Host: www.sk386.com"; sid:10032; rev:1;)
+# did't catch scirpt content
 alert tcp any any -> any 80 (msg:"script href mkmk35.com"; content:"%3cscript%3etop.location.href%3d'http://mkmk35.com'%3c/script%3e"; sid:10033; rev:1;)
 
 # 27 - http://www.tcosc.net/ -> https
