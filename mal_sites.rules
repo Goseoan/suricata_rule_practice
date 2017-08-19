@@ -1,0 +1,166 @@
+# 1 - http://hitomi.la
+alert dns any any -> any any (msg:"dns hitomi.la"; dns_query; content:"hitomi.la"; nocase; sid:10001; rev:1;)
+alert tls any any -> any any (msg:"sni hitomi.la"; tls_sni; content:"hitomi.la"; sid:10002;)
+
+#2 - http://kass.org.kp/
+# redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:"tcp kass.org.kp"; content:"GET /"; content:"Host: kass.org.kp"; sid:10003; rev:1;)
+
+# 3 - http://kcna.kp/
+alert tcp any any -> any 80 (msg:" tcp kcna.kp"; content:"GET /"; content:"Host: kcna.kp"; sid:10004; rev:1;)
+
+# 4 - http://kitribob.wiki/wiki/
+alert tcp any any -> any 80 (msg:" tcp kitribob.wiki"; content:"GET /"; content:"Host: kitribob.wiki"; sid:10005; rev:1;)
+
+# 5 - http://ks8282.com/
+alert tcp any any -> any 80 (msg:" tcp ks8282"; content:"GET /"; content:"Host: ks8282.com"; sid:10006; rev:1;)
+
+# 6 - http://linoit.com/users/men1212/canvases/19%EA%B8%88%20
+alert tcp any any -> any 80 (msg:" tcp linoit"; content:"GET /users/men1212/canvases/19%EA%B8%88%20"; content:"Host: linoit.com"; sid:10007; rev:1;)
+#alert tcp any any -> any 80 (msg:" tcp linoit"; content:"GET ; content:"Host: linoit.com"; sid:10007; rev:1;)
+
+# 7 -  http://naevr.com/
+# redirection integer range ? 302 status code....;;;;
+alert tcp any any -> any 80 (msg:" tcp naevr.com"; content:"GET /"; content:"Host: naevr.com"; sid:10008; rev:1;)
+alert tcp any any -> any any (msg:" tcp naevr.com_302"; content:"302"; http_stat_code; content:"Location: http://*.naevr.com"; sid:10009; rev:1;)
+alert tcp any any -> any 80 (msg:" tcp ww#.naevr.com"; content:"GET /"; content:"Host: *.naevr.com"; content:"Host: ww7.naevr.com"; content:"Host: ww12.naevr.com";sid:10011; rev:1;)
+
+# 8 - http://named.com/game/ladder/v2_index.php
+alert tcp any any -> any 80 (msg:" tcp named"; content:"GET /game/ladder/v2_index.php"; content:"Host: named.com"; sid:10013; rev:1;)
+#alert tcp any any -> any 80 (msg:" tcp named"; content:"GET "; content:"Host: namsed.com"; sid:10013; rev:1;)
+
+# 9 - http://naver6.com
+alert tcp any any -> any 80 (msg:" tcp naver6"; content:"GET /"; content:"Host: naver6.com"; sid:10014; rev:1;)
+
+# 10 - http://onaratv.com/
+# page not found
+
+# 11 - http://pornpros.com
+# redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:" tcp pornpros"; content:"GET /"; content:"Host: pornpros.com"; sid:10015; rev:1;)
+
+# 12 - http://rodong.rep.kp/
+# redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:" tcp rodong"; content:"GET /"; content:"Host: rodong.rep.kp"; sid:10016; rev:1;)
+
+# 13 - http://snoopspy.com/download
+alert tcp any any -> any 80 (msg:"tcp snoospy"; content:"GET /download"; content:"Host: snoopspy.com"; sid:10017; rev:1;)
+
+# 14 - http://test.gilgil.net/streaming/test.mp4
+alert tcp any any -> any 80 (msg:"tcp gilgil streaming"; content:"GET /streaming/test.mp4"; content:"Host: test.gilgil.net"; sid:10018; rev:1;)
+
+# 15 - http://uriminzokkiri.com
+# redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:"tcp uriminzokkiri"; content:"GET /"; content:"Host: uriminzokkiri.com"; sid:10019; rev:1;)
+alert tcp any any -> any 80 (msg:"tcp uriminzokkiri/favicon"; content:"GET /favicon.ico"; content:"Host: uriminzokkiri.com"; sid:10020; rev:1;)
+
+# 16 - http://www.4shared.com -> edit https://www.4shared.com
+# http -> redirect to warning.or.kr
+# alert tcp any any -> any 80 (msg:"tcp 4shared"; content:"GET /"; content:"Host: www.4shared.com"; sid:10021; rev:1;)
+alert dns any any -> any any (msg:"dns 4shared"; dns_query; content:"www.4shared.com"; nocase; sid:10021; rev:1;)
+alert tls any any -> any any (msg:"sni 4shared"; tls_sni; content:"www.4shared.com"; sid:10022;)
+
+# 17 - http://www.bamwar25.com/
+alert tcp any any -> any 80 (msg:"tcp bamwar25"; content:"GET /"; content:"Host: www.bamwar25.com"; sid:10023; rev:1;)
+
+# 18 - http://www.faa25.com/
+alert tcp any any -> any 80 (msg:"tcp faa25"; content:"GET /"; content:"Host: www.faa25.com"; sid:10024; rev:1;)
+
+# 19 - http://www.ilbe.com/ilbe
+alert tcp any any -> any 80 (msg:"tcp ilbe"; content:"GET /ilbe"; content:"Host: www.ilbe.com"; sid:10025; rev:1;)
+#alert tcp any any -> any 80 (msg:"tcp ilbe"; content:"GET "; content:"Host: www.ilbe.com"; sid:10025; rev:1;)
+
+# 20 - http://www.kimmadam.net/
+alert tcp any any -> any 80 (msg:"tcp kimmadam"; content:"GET /"; content:"Host: www.kimmadam.com"; sid:10026; rev:1;)
+
+# 21 - http://www.minjok.com
+# http -> redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:"tcp minjok"; content:"GET /"; content:"Host: www.minjok.com"; sid:10027; rev:1;)
+
+# 22 - http://www.narutoxxx.com
+# http -> redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:"tcp narutoxxx"; content:"GET /"; content:"Host: www.narutoxxx.com"; sid:10028; rev:1;)
+
+# 23 - http://www.naver.com
+alert tcp any any -> any 80 (msg:"tcp naver"; content:"GET /"; content:"Host: www.naver.com"; sid:10029; rev:1;)
+
+# 24 - http://www.ryomyong.com
+# http -> redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:"tcp ryomyong"; content:"GET /"; content:"Host: www.ryomyong.com"; sid:10030; rev:1;)
+
+# 25 - http://www.sedisk.com
+alert tcp any any -> any 80 (msg:"tcp sedisk"; content:"GET /"; content:"Host: sedisk.com"; sid:10031; rev:1;)
+
+# 26 - http://www.sk386.com/
+# redirect to mkmk35.com ; <script>top.location.href='http://mkmk35.com'</script> ;
+alert tcp any any -> any 80 (msg:"tcp sk386"; content:"GET /"; content:"Host: www.sk386.com"; sid:10032; rev:1;)
+alert tcp any any -> any 80 (msg:"script href mkmk35.com"; content:"%3cscript%3etop.location.href%3d'http://mkmk35.com'%3c/script%3e"; sid:10033; rev:1;)
+
+# 27 - http://www.tcosc.net/ -> https
+alert tcp any any -> any 80 (msg:"tcp tcosc"; content:"GET /"; content:"Host: www.tcosc.net"; sid:10034; rev:1;)
+alert tls any any -> any any (msg:"sni tcosc"; tls_sni; content:"tcosc.net"; sid:10035;)
+
+# 28 - http://www.torenzoa.net
+# http -> redirect to warning.or.kr
+alert tcp any any -> any 80 (msg:"tcp torenzoa"; content:"GET /"; content:"Host: www.torenzoa.net"; sid:10036; rev:1;)
+
+# 29 - http://www.umj262.com/
+alert tcp any any -> any 80 (msg:"tcp umj262"; content:"GET /"; content:"Host: www.umj262.com"; sid:10037; rev:1;)
+
+# 30 - http://www.uriminzokkiri.com
+#Unable to connect
+alert tcp any any -> any 80 (msg:"tcp uriminzokkiri"; content:"GET /"; content:"Host: www.uriminzokkiri.com"; sid:10038; rev:1;)
+
+# 31 - http://www.uriminzokkiri.com/
+# Overlap with 30 above
+
+# 32 - http://www.winclub88.net/my/4D.html
+alert tcp any any -> any 80 (msg:"tcp winclub88"; content:"GET /my/4D.html"; content:"Host: www.winclub88.net"; sid:10039; rev:1;)
+
+# 33 - https://graphgame.net/
+# ?? dont' catch tls_sni
+alert dns any any -> any any (msg:"dns graphgame.net"; dns_query; content:"graphgame.net"; nocase; sid:10040; rev:1;)
+alert tls any any -> any any (msg:"sni graphgame.net"; tls_sni; content:"graphgame.net"; sid:10041;)
+
+# 34 - https://mujige53770.wixsite.com
+alert dns any any -> any any (msg:"dns mujige53770"; dns_query; content:"mujige53770.wixsite.com"; nocase; sid:10042; rev:1;)
+alert tls any any -> any any (msg:"sni mujige53770"; tls_sni; content:"mujige53770.wixsite.com"; sid:10043;)
+
+# 35 - https://sex.com
+# http -> redirect to warning.or.kr #SSL
+alert tcp any any -> any 80 (msg:"tcp sex"; content:"GET /"; content:"Host: www.sex.com"; sid:10044; rev:1;)
+#alert dns any any -> any any (msg:"dns sex"; dns_query; content:"sex.com"; nocase; sid:10042; rev:1;)
+alert tls any any -> any any (msg:"sni sex"; tls_sni; content:"sex.com"; sid:10045;)
+
+# 36 - https://torrenthaja.com
+alert dns any any -> any any (msg:"dns torrenthaja"; dns_query; content:"torrenthaja.com"; nocase; sid:10046; rev:1;)
+alert tls any any -> any any (msg:"sni torrenthaja"; tls_sni; content:"torrenthaja.com"; sid:10047;)
+
+# 37 - https://torrentkim10.net
+alert dns any any -> any any (msg:"dns torrentkim10"; dns_query; content:"torrentkim10.net"; nocase; sid:10048; rev:1;)
+alert tls any any -> any any (msg:"sni torrentkim10"; tls_sni; content:"torrentkim10.net"; sid:10049;)
+
+# 38 - https://webtoon.bamtoki.com/
+alert dns any any -> any any (msg:"dns webtoon.bamtoki"; dns_query; content:"webtoon.bamtoki.com"; nocase; sid:10050; rev:1;)
+alert tls any any -> any any (msg:"sni webtoon.bamtoki"; tls_sni; content:"webtoon.bamtoki.com"; sid:10051;)
+
+# 39 - https://www.facebook.com/profile.php?id=100019007882633
+alert dns any any -> any any (msg:"dns facebook"; dns_query; content:"www.facebook.com"; nocase; sid:10052; rev:1;)
+alert tls any any -> any any (msg:"sni facebook"; tls_sni; content:"www.facebook.com"; sid:10053;)
+
+# 40 - https://www.mtbucks.com
+alert dns any any -> any any (msg:"dns mtbucks"; dns_query; content:"www.mtbucks.com"; nocase; sid:10054; rev:1;)
+alert tls any any -> any any (msg:"sni mtbucks"; tls_sni; content:"www.mtbucks.com"; sid:10055;)
+
+# 41 - https://www.opioids.com/offshorepharmacy/index.html
+alert dns any any -> any any (msg:"dns opioids"; dns_query; content:"www.opioids.com"; nocase; sid:10056; rev:1;)
+alert tls any any -> any any (msg:"sni opioids"; tls_sni; content:"www.opioids.com"; sid:10057;)
+
+# 42 - https://www.phishtank.com/
+alert dns any any -> any any (msg:"dns phishtank"; dns_query; content:"www.phishtank.com"; nocase; sid:10058; rev:1;)
+alert tls any any -> any any (msg:"sni phishtank"; tls_sni; content:"www.phishtank.com"; sid:10059;)
+
+# 43 - https://yobit.net/en/dice/
+alert dns any any -> any any (msg:"dns yobit"; dns_query; content:"yobit.net"; nocase; sid:10060; rev:1;)
+# Client hello packet not found in tls communication
+alert tls any any -> any any (msg:"sni yobit"; tls_sni; content:"yobit.net"; sid:10061;)
